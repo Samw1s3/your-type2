@@ -5,14 +5,10 @@ const { getMeetups,
      createMeetups, 
      deleteMeetup } = require('../controllers/meetupController');
 
-router.route('/').get(getMeetups).post(createMeetups)
-router.route('/:id').delete(deleteMeetup).put(updateMeetup)
+const {protect} = require('../middleware/auth')
 
-
-
-router.put('/:id', updateMeetup)
-
-router.delete('/:id', deleteMeetup)
+router.route('/').get(protect, getMeetups).post(protect, createMeetups)
+router.route('/:id').delete(protect, deleteMeetup).put(protect, updateMeetup)
 
 
 module.exports = router

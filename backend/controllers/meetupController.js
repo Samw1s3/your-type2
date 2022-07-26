@@ -1,9 +1,10 @@
 const asyncHandler = require('express-async-handler')
 
 const Meetup = require('../models/meetupModel')
+const User = require('../models/userModel')
 // get meetups request GET /api/meetups
 const getMeetups = asyncHandler(async (req,res) => {
-    const meetups = await Meetup.find()
+    const meetups = await Meetup.find({user:req.user.id})
     res.status(200).json(meetups)
 })
 
@@ -15,6 +16,7 @@ const createMeetups = asyncHandler(async (req,res) => {
     }
 
     const meetup = await Meetup.create({
+            user: req.user.id,
             name: req.body.name,
             hairColor: req.body.hairColor,
             height: req.body.height,
@@ -39,6 +41,19 @@ const updateMeetup = asyncHandler(async (req,res) => {
         throw new Error('Meetup not found')
     }
 
+    const user = await User.findById(req.user.id)
+
+    //check for user
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+    //make sure that logged in user makes meetup user
+    if(meetup.user.toString() !== user.id){
+        res.status(401)
+        throw new Error('user not authorized')
+    }
+
     const updatedMeetup = await Meetup.findByIdAndUpdate(req.params.id, req.body, {new:true})
 
     res.status(200).json(updatedMeetup)
@@ -51,6 +66,17 @@ const deleteMeetup = asyncHandler(async (req,res) => {
     if(!meetup) {
         res.status(400)
         throw new Error('Meetup not found')
+    }
+
+    //check for user
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+    //make sure that logged in user makes meetup user
+    if(meetup.user.toString() !== user.id){
+        res.status(401)
+        throw new Error('user not authorized')
     }
 
     await meetup.remove()
