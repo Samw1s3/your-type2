@@ -1,21 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const { getMeetups,
+     updateMeetup, 
+     createMeetups, 
+     deleteMeetup } = require('../controllers/meetupController');
 
-router.get('/', (req, res) => {
-    res.status(200).json({message: 'Get Meetups'})
-})
+router.route('/').get(getMeetups).post(createMeetups)
+router.route('/:id').delete(deleteMeetup).put(updateMeetup)
 
-router.post('/', (req, res) => {
-    res.status(200).json({message: 'Create Meetup'})
-})
 
-router.put('/:id', (req, res) => {
-    res.status(200).json({message: `update Meetup ${req.params.id}`})
-})
 
-router.delete('/:id', (req, res) => {
-    res.status(200).json({message: `delete Meetup ${req.params.id}`})
-})
+router.put('/:id', updateMeetup)
+
+router.delete('/:id', deleteMeetup)
 
 
 module.exports = router
