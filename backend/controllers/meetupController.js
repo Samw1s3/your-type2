@@ -16,7 +16,7 @@ const createMeetups = asyncHandler(async (req,res) => {
     }
 
     const meetup = await Meetup.create({
-            user: req.user.id,
+            user: req._id,
             name: req.body.name,
             hairColor: req.body.hairColor,
             height: req.body.height,

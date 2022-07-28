@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { defaultMemoize } from 'reselect'
 
-const API_URL = '/api/users/'
+const API_URL = '/api/user/'
 
 // Register user
 const register = async (userData) => {
