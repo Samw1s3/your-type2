@@ -42,7 +42,7 @@ function Register() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    console.log('why are you so aggresive ')
     if(password !== password2) {
       toast.error('Passwords do not match')
     } else {
@@ -53,9 +53,9 @@ function Register() {
       }
 
       dispatch(register(userData))
-
     }
   }
+
   if(isLoading){
     return <Spinner />
   }
@@ -71,29 +71,28 @@ function Register() {
       </section>
 
       <section className='form'>
-        <div className='form-group'>
-          <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
+          <div className='form-group'>
             <input type="text" className='form-control' id="username" name='username' value={username} placeholder='enter a username' onChange={onChange}/>
-          </form>
         </div>
         <div className='form-group'>
-          <form>
-            <input type="email" className='form-control' id="email" name='email' value={email} placeholder='enter your email' onChange={onChange}/>
-          </form>
+          <input type="email" className='form-control' id="email" name='email' value={email} placeholder='enter your email' onChange={onChange}/>
+          
         </div>
         <div className='form-group'>
-          <form>
+          
             <input type="password" className='form-control' id="password" name='password' value={password} placeholder='enter your password' onChange={onChange}/>
-          </form>
+          
         </div>
         <div className='form-group'>
-        <form>
+        
             <input type="password" className='form-control' id="password2" name='password2' value={password2} placeholder='confirm your password'onChange={onChange} />
-          </form>
+          
         </div>
         <div>
           <button type='submit' className='btn btn-block'>Submit</button>
         </div>
+        </form>
       </section>
     </>
   )

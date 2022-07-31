@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
-// register login user post /api/user/login
+// login user post /api/user/login
 const loginUser = asyncHandler(async (req,res) => {
     const {email,password} = req.body
     //check for user email
@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req,res) => {
 
     if(user) {
         res.status(201).json({
-            _id:user.id, 
+            _id: user.id, 
             username: user.username,
             email: user.email,
             token: generateToken(user._id),
@@ -82,5 +82,5 @@ const generateToken = (id) => {
 }
 
 module.exports = {
-    registerUser, loginUser, getMe
+    registerUser, loginUser, getMe,
 }
