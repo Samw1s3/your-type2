@@ -42,7 +42,6 @@ function Register() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log('why are you so aggresive ')
     if(password !== password2) {
       toast.error('Passwords do not match')
     } else {
