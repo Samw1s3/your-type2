@@ -41,15 +41,13 @@ const updateMeetup = asyncHandler(async (req,res) => {
         throw new Error('Meetup not found')
     }
 
-    const user = await User.findById(req.user.id)
-
     //check for user
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
     //make sure that logged in user makes meetup user
-    if(meetup.user.toString() !== user.id){
+    if(meetup.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('user not authorized')
     }
@@ -69,12 +67,12 @@ const deleteMeetup = asyncHandler(async (req,res) => {
     }
 
     //check for user
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
     //make sure that logged in user makes meetup user
-    if(meetup.user.toString() !== user.id){
+    if(meetup.user.toString() !== req.user.id){
         res.status(401)
         throw new Error('user not authorized')
     }

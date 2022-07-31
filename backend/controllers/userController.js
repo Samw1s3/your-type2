@@ -64,13 +64,7 @@ const registerUser = asyncHandler(async (req,res) => {
 
 // get user data  get /api/user/login
 const getMe = asyncHandler(async (req,res) => {
-    const { _id, username , email } = await User.findById(req.user.id)
-
-    res.status(200).json({
-        id: _id,
-        username, 
-        email
-    })
+   res.status(200).json(req.user)
 })
 
 

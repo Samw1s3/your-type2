@@ -12,7 +12,7 @@ function Dashboard() {
   // newMeetup form should be new component
   return (
     <div>
-     <img src={Logo}></img>
+     <img src={Logo} alt="your type logo"></img>
      <div>Dashboard</div> 
     </div>
     
