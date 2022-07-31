@@ -11,9 +11,8 @@ const meetupSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a name']
     },
-    hairColor: {
+      hair: {
         type: String,
-        
       },
       height: {
         type: Number,

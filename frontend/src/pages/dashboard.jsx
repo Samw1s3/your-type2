@@ -2,6 +2,7 @@ import Logo from '../assets/yt_logo.png'
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useSelector} from "react-redux"
+import MeetupForm from '../components/meetupForm'
 
 function Dashboard() {
 
@@ -31,6 +32,7 @@ function Dashboard() {
       <h1>Welcome {user && user.username}, <br></br>Let's find your type</h1>
       <p>Meetups Dashboard</p>
      </section>
+     <MeetupForm />
     </>
     
   )
