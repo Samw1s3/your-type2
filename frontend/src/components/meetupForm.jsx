@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {createMeetup} from '../features/meetups/meetupsSlice'
 
 function MeetupForm() {
@@ -46,7 +46,7 @@ function MeetupForm() {
     }
 
   return (
-    <section className='form'>Meetup Form</section>>
+    <section className='form'>
     <form onSubmit={onSubmit}>
         <div className='form-group'>
             <label htmlFor='text'>Name</label>
@@ -77,6 +77,7 @@ function MeetupForm() {
         </div>
 
     </form>
+    </section>
   )
 }
 

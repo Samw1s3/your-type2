@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import authService from '../auth/authService'
+import meetupsService from './meetupsService'
 
 const initialState = {
     meetups: [],
@@ -11,6 +11,7 @@ const initialState = {
 
 //create new meetup
 export const createMeetup = createAsyncThunk('api/meetups', async (meetupData, thunkAPI) => {
+    console.log(thunkAPI)
     try {
         const token = thunkAPI.getState().auth.user.token
         return await meetupsService.createMeetup(meetupData, token)
@@ -18,7 +19,7 @@ export const createMeetup = createAsyncThunk('api/meetups', async (meetupData, t
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     } 
-    }
+    
 })
 
 export const meetupSlice = createSlice ({
@@ -26,6 +27,22 @@ export const meetupSlice = createSlice ({
     initialState,
     reducers: {
         reset: (state) => initialState
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(createMeetup.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(createMeetup.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.meetups.push(action.payload)
+            })
+            .addCase(createMeetup.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
     }
 })
 

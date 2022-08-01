@@ -1,3 +1,23 @@
 import axios from 'axios'
 
 const API_URL = '/api/meetups'
+
+// create new meetup
+const createMeetup = async (meetupData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    console.log(token)
+
+    const response = await axios.post(API_URL, meetupData, config)
+
+    return response.data
+}
+
+const meetupsService = {
+    createMeetup
+}
+
+export default meetupsService

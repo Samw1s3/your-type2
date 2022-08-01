@@ -15,7 +15,7 @@ const meetupSchema = mongoose.Schema({
         type: String,
       },
       height: {
-        type: Number,
+        type: String,
       },
       physicalAttributes: {
         type: String,
@@ -27,7 +27,7 @@ const meetupSchema = mongoose.Schema({
         type: String,
       },
       butterflies: {
-        type: Number,
+        type: String,
       },
       eyeContact: {
         type: String,
