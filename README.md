@@ -20,22 +20,21 @@ Put the following commands into your terminal before running the server.js
 
 ## Usage Insturctions
 
-Please install all packages before starting. Run both schema files (create.sql & seeds.sql) in the mysql terminal before running the node app.js in your terminal 
+Please install all packages before starting. 
 
-Make sure to update the .env file to assist with you seeding a database
+Make sure to update the .env file to assist with a database
 
 ## Screen Shots
-Home Page <br/>
-<img src="./images/Home.jpg" width="600px">
+Login Page <br/>
+<img src="./frontend/src/assets/login.jpg" width="350px">
 
 Dashboard <br/>
-<img src="./images/dashboard.jpg" width="600px">
+<img src="./frontend/src/assets/dashboard.jpg" width="350px">
 
-Comments <br/>
-<img src="./images/update and edit.jpg" width="600px">
+Saved Meetups Page <br/>
+<img src="./frontend/src/assets/saved meetups.jpg" width="350px">
 
-Update and Edit <br/>
-<img src="./images/dashboard.jpg" width="600px">
+
 
 ## Repository Link
 To find out more information about this repo please visit my github page https://github.com/Samw1s3/your-type2
