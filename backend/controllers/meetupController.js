@@ -4,7 +4,7 @@ const Meetup = require('../models/meetupModel')
 const User = require('../models/userModel')
 // get meetups request GET /api/meetups
 const getMeetups = asyncHandler(async (req,res) => {
-    const meetups = await Meetup.find({user:req.user.id})
+    const meetups = await Meetup.find({user: req.user.id})
     res.status(200).json(meetups)
 })
 
@@ -16,7 +16,7 @@ const createMeetups = asyncHandler(async (req,res) => {
     }
 
     const meetup = await Meetup.create({
-            user: req._id,
+            user: req.user.id,
             name: req.body.name,
             hairColor: req.body.hairColor,
             height: req.body.height,

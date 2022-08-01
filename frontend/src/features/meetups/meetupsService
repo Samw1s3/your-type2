@@ -16,8 +16,8 @@ const createMeetup = async (meetupData, token) => {
     return response.data
 }
 
-const meetupsService = {
-    createMeetup
+const meetupService = {
+    createMeetup,
 }
 
-export default meetupsService
+export default meetupService
