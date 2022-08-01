@@ -37,7 +37,7 @@ function Dashboard() {
   }
   return (
     <>
-     <img src={Logo} alt="your type logo"></img>
+     <img src={Logo} alt="your type logo" width="300px"></img>
      <section className='heading'>
       <h1>Welcome {user && user.username}, <br></br>Let's find your type</h1>
       <p>Meetups Dashboard</p>

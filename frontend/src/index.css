@@ -191,6 +191,11 @@ h3 {
   animation: spin 1.2s linear infinite;
 }
 
+.test {
+  border: 8px solid red;
+  color: red;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

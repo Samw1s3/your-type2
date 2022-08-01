@@ -4,8 +4,8 @@ function Meetups() {
     return (
         <section > Saved Meetups
             <div> 
-                <h2>Your Tallied Results</h2>
-                <div className="meetups">
+                <h2 className="test">Your Tallied Results - PlaceHolder</h2>
+                <div className="meetups test"> 
                     <div>Height: 180cm </div><div> Hair: Brown</div> <div>Physical: 0 </div><div> Smile: 1 </div>
                 </div>
 
