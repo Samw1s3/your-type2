@@ -60,10 +60,11 @@ function Login() {
   return (
     <>
       <section>
+        <img src={Logo} alt="your type logo" width="200px"></img>
         <h1 className="heading">
           <FaSignInAlt /> Login
         </h1>
-        <img src={Logo} alt="your type logo" width="200px"></img>
+        
         <p>
           Please login and start recording meetups
         </p>
