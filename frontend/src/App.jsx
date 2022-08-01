@@ -5,6 +5,7 @@ import Header from './components/header'
 import Dashboard from './pages/dashboard'
 import Login from './pages/login'
 import Register from './pages/register'
+import Meetups from './pages/meetups' 
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/meetups' element={<Meetups />} />
           </Routes>
         </div>
       </Router>

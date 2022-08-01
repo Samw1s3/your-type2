@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {createMeetup} from '../features/meetups/meetupsSlice'
 
 function MeetupForm() {
@@ -20,6 +21,7 @@ function MeetupForm() {
     const {name, hair, height, physicalAttributes, conversation, laughs, butterflies, eyeContact, smile, generalVibe } = formData
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -43,6 +45,7 @@ function MeetupForm() {
             generalVibe
         }
         dispatch(createMeetup(meetupData))
+        navigate('/meetups')
     }
 
   return (
@@ -72,6 +75,10 @@ function MeetupForm() {
         <div className='form-group'>
             <label htmlFor='text'>Laughs</label>
             <input type="text" name='laughs' id='laughs' value={laughs} onChange={onChange} />
+        </div>
+        <div className='form-group'>
+            <label htmlFor='text'>General Vibe</label>
+            <input type="text" name='generalVibe' id='generalVibe' value={generalVibe} onChange={onChange} />
         </div>
         <div className='form-group'>
             <button className='btn btn-block' type='submit'>Add Meetup</button>

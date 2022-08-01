@@ -16,8 +16,34 @@ const createMeetup = async (meetupData, token) => {
     return response.data
 }
 
+// Get user meetups
+const getMeetups = async (token) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  
+    const response = await axios.get(API_URL, config)
+  
+    return response.data
+  }
+  
+  // Delete user Meetups
+  const deleteMeetup = async (goalId, token) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  
+    const response = await axios.delete(API_URL + meetupId, config)
+  
+    return response.data
+  }
+
 const meetupService = {
-    createMeetup,
+    createMeetup, getMeetups, deleteMeetup,
 }
 
 export default meetupService

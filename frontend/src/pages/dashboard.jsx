@@ -1,30 +1,40 @@
 import Logo from '../assets/yt_logo.png'
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
 import MeetupForm from '../components/meetupForm'
+// import MeetupItem from '../components/meetupItem'
+import Spinner from '../components/spinner'
+import { getMeetups, reset} from '../features/meetups/meetupsSlice'
 
 function Dashboard() {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const {user} = useSelector((state) => state.auth) 
+  const { isLoading, isError, message} = useSelector((state) => state.meetups)
 
+  
   useEffect(() => {
-    if(!user){
+    if (isError) {
+      console.log(message)
+    }
+
+    if (!user) {
       navigate('/login')
     }
-  }, [user, navigate])
-  // get user by id 
 
+    dispatch(getMeetups())
 
-  // get meetups associated to user
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, isError, message, dispatch])
 
-
-  //post request to create new meeting 
-
-
-  // newMeetup form should be new component
+  if (isLoading) {
+    return <Spinner />
+  }
   return (
     <>
      <img src={Logo} alt="your type logo"></img>
@@ -33,6 +43,9 @@ function Dashboard() {
       <p>Meetups Dashboard</p>
      </section>
      <MeetupForm />
+     <section>  
+      
+     </section>
     </>
     
   )

@@ -23,7 +23,7 @@ export const createMeetup = createAsyncThunk('/api/meetups', async (meetupData, 
 })
 
 //Get user meetups 
-export const getMeetups = createAsyncThunk('meetups/getAll', async (_, thunkAPI) => {
+export const getMeetups = createAsyncThunk('meetups/getAll', async (meetupData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
         console.log(token);

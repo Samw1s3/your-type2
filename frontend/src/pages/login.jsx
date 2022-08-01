@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {login, reset} from '../features/auth/authSlice'  
+import Logo from '../assets/yt_logo.png'
 
 import Spinner from '../components/spinner'
 
@@ -62,6 +63,7 @@ function Login() {
         <h1 className="heading">
           <FaSignInAlt /> Login
         </h1>
+        <img src={Logo} alt="your type logo" width="200px"></img>
         <p>
           Please login and start recording meetups
         </p>
